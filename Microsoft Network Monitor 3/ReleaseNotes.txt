@@ -1,0 +1,522 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Microsoft(R) Network Monitor 3.4 - Release Notes
+
+  Welcome to the most innovative tool in network traffic analysis.
+  This document describes late breaking news and important
+  information about this version of Microsoft Network Monitor.
+
+  	********************************
+	**** IMPORTANT PLEASE READ *****
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TABLE OF CONTENTS
+-----------------
+1.  System Requirements
+2.  What's New in Network Monitor 3.4
+3.  Installation Changes in Network Monitor 3.4
+4.  Breaking Changes from Previous Versions
+5.  Capture Driver Requires Administrative Privileges
+6.  Operating on Windows Vista and Windows Server 2008
+7.  Operating on a Windows Server 2008 Read-only Domain Controller (RODC)
+8.  Co-existence with Previous Versions of Network Monitor
+9.  Providing Feedback
+10. Default Directory Names
+11. Known Issues for All Platforms
+
+----------------------
+1. System Requirements
+----------------------
+
+  Hardware:
+    • 1 GHz or greater CPU
+    • 1 GB or greater memory 
+    • 25 MB free hard disk space plus extra room for capture files 
+
+  Operating System (X86, AMD64):
+    • Windows XP SP3
+    • Windows Vista SP1
+    • Windows Server 2003 SP2
+    • Windows Server 2008 SP1 (+ IA64 builds)
+    • Windows Server 2008 R2
+    • Windows 7 RTM
+    
+
+
+-----------------------------------------
+2. What's New in Network Monitor 3.4
+-----------------------------------------
+
+• User Interface Refresh: The Network Monitor UI has evolved. New features
+  have been added and previously hard-to-find features have been made more 
+  readily available:
+  
+  • Parser Configuration Management: Parsers are now installed with profiles 
+    that allow you to easily switch between parser configurations with the 
+    Parser Profiles toolbar button.  These configurations are also cached, 
+    removing the need to recompile when you switch between them.
+    
+  • Column Management: Network Monitor will automatically choose a column layout 
+    based on the type of file being opened. This column layout is applied to the 
+    Frame Summary Window. This layout can be modified and saved for future use. 
+    In addition, two extra layouts for HTTP and TCP diagnostics are included.
+
+  • Color Rules: Network Monitor can now save sets of Color Rules to files for 
+    easy sharing. You can also right-click in the Frame Summary and Frame Details 
+    windows to add a new Color Rule. 
+
+  • Window Layout Dropdown: The new window layout dropdown provides multiple 
+    configurations for window arrangement. You can move windows by holding down 
+    the Shift key while clicking on their title bars. Arrangements are saved 
+    for each of the three layout options. The Restore Default Layout option 
+    will reset the currently selected layout back to the default.
+    
+  • "Live" Experts: Experts can now be run during a live capture session. Also, 
+    experts that have been recently installed now appear automatically in the 
+    Experts menu, without requiring you to open another tab.
+    
+  • Fixed-Width Font: You can now use a fixed-width font in the Frame Summary window.
+  
+  • Auto-Apply Aliases: Aliases are now automatically applied and re-applied 
+    when created using the right-click add-to-alias feature.
+  
+• High Performance Filtering: Network Monitor will now enter a high-performance 
+  capturing mode when you specify fully qualified capture filters with certain 
+  fields in the UI or nmcap (e.g. Frame.Ethernet.IPv4.TCP.Port == 8080).
+  
+• UTC Timestamps: Network Monitor will now capture and save Time Zone related 
+  information in a trace. By default, traces opened with Time Zone information 
+  will automatically have times adjusted to your local Time Zone. The original 
+  time or Time Zone can be viewed by adding the "Time and Date" column or viewing 
+  the Properties under the File menu.
+  
+• 802.11n & Raw IP Frame Support - Network Monitor now supports monitor mode on 
+  802.11n network on Microsoft Windows Vista SP1 and later operating systems as 
+  well as Raw IP Frames on Microsoft Windows 7.
+
+• Process Tracking in NMCap: It is now possible to capture process tracking 
+  information in the NMCap command-line tool. It will automatically be enabled 
+  when using a filter, or can be manually enabled using the "/CaptureProcesses" flag.
+
+-----------------------------------------------
+3. Installation Change from Network Monitor 3.2
+-----------------------------------------------
+
+The Network Monitor core engine has been decoupled from the parser set. 
+
+To install the full Network Monitor 3.4 product:
+• Run Netmonsetup.exe
+
+To uninstall the full Network Monitor 3.4 product:
+  1. Go to Add/Remove Programs in Control Panel
+  2. Uninstall both Microsoft Network Monitor 3.4 and Microsoft Network 
+  Monitor: Microsoft Parsers 3.4.
+
+
+-----------------------------------------
+4. Breaking Changes from Previous Versions
+------------------------------------------
+
+The following changes have been made in the Network Monitor API since version 3.3 RTW.
+You do NOT need to recompile your API applications if they were compiled with 3.3 RTW.
+
+• None.
+
+
+Breaking changes before 3.3 RTW
+
+
+The following changes apply only to C#. These changes were made between version 3.3 Beta and 3.3 RTW. You must recompile your C# API applications if they were compiled with 3.3 Beta or earlier.
+
+• The NmFrameParseOptions enumeration has been renamed to NmFrameParsingOption.
+
+• The data type of the Options parameter of the NmParseFrame function has been changed from
+  UInt32 to NmFrameParsingOption.
+
+• The data type of the Options parameter of the NmParseBuffer function has been changed
+  from UInt32 to NmFrameParsingOption.:
+
+
+The following changes were made in the Network Monitor API between version 3.2 RTW and 3.3 RTW. These
+changes apply to all languages. You must recompile your API applications if they were compiled with 3.2 RTW or 
+earlier.
+
+• The elements of the NmFrameParserOptimizeOption enumeration have been renamed as
+  follows:
+
+    a) NmPaserOptimizeNone to NmParserOptimizeNone
+
+    b) NmPaserOptimizeFull to NmParserOptimizeFull
+
+    c) NmPaserOptimizeLast to NmParserOptimizeLast
+
+• The FrameParsingOption member of the NM_API_CONFIGURATION structure has been
+  removed.
+
+The following changes apply only to C# between version 3.2 RTW and 3.3 RTW.
+You must recompile your C# API applications if they were compiled with 3.2 RTW or earlier.
+
+• The namespace was changed from Microsoft.Protocols.TestTools.Netmon.API to
+  Microsoft.NetworkMonitor.
+
+• A parameter has been added to the NmCreateFrameParser function: OptimizeOption.
+  Possible values are elements of the NmFrameParserOptimizeOption enumeration.
+
+
+-----------------------------------------------------
+5.  Capture Driver Requires Administrative Privileges
+-----------------------------------------------------
+
+  The Network Monitor 3.4 driver captures network traffic only if it is 
+  run with administrator privileges. For Windows XP and Windows Server 
+  2003, this requires that the user be logged on as an administrator on the computer 
+  (local or domain account.)
+
+  For Windows Vista, Windows Server 2008, and Windows 7, the Network Monitor 3.4 driver can 
+  gain administrative privileges in two ways:
+
+   a)  (Recommended) Place your user account in the Netmon Users group.  
+       (This group is created during installation, and the current user is 
+       added to the group; adding users to the group requires administrator 
+       privileges.) Once added, the user must log off and log back on for the 
+       change to take effect. 
+
+	 If you are installing Network Monitor 3.x for the first time, log off 
+	 and log back on after installation to enable capturing.
+
+    b)  Run Netmon.exe as an administrator (from an elevated command
+        window, or right-click on Run as administrator.)
+
+
+
+------------------------------------------------------------------
+6.  Operating on Windows Vista, Windows Server 2008, and Windows 7
+------------------------------------------------------------------
+
+  To capture traffic on Windows Vista and Windows Server 2008
+  you must add your user account to the Netmon Users Group. This
+  is usually done during installation for the user installing Network Monitor 3.4.
+
+  NOTE:  After adding your user account, you must log off and log back on for the
+         changes to take effect.
+
+  If your account is not in the Netmon Users group, you cannot 
+  start a new capture, and this is visible in several
+  ways:
+
+   • When you try to start a capture, you will see the error:
+     "None of the network adapters are bound to the netmon driver."
+
+   • All adapters in the Select Networks window will show the message:
+     "This network adapter is not configured to capture."
+
+  Alternatively, if you are an administrator on the computer, you can run
+  Netmon.exe as an administrator (from an elevated command window, or right-click on 
+  Run as administrator.)
+
+
+----------------------------------------------------------------
+7. Operating on a Windows Server 2008 Read-only Domain Controller (RODC)
+----------------------------------------------------------------
+
+  Normally, when you install Network Monitor, the setup 
+  creates a local security group called Netmon Users and adds the 
+  installing user to that group. Local groups cannot be created on an 
+  Windows Server 2008 RODC, because of its read-only nature. Setup 
+  continues, but Network Monitor 3.4 can capture traffic only 
+  if it is run with administrative privileges.
+
+  There are three possible workarounds:
+
+    a)  Before installing Network Monitor 3.4 on any DCs in the domain, 
+	create a domain-wide group called Netmon Users. This group 
+	will be available on RODCs. A subsequent installation of Network 
+	Monitor 3.4 on an RODC then behaves normally.
+
+    b)  If Network Monitor 3.4 has already been installed on an RODC, 
+	create the domain-wide group Netmon Users on the 
+	non-read-only Domain Controller. The group is then replicated 
+	to the RODC:
+	• Manually add the user, using Active Directory Users and Computers 
+          (DSA.MSC).
+	• Run “nmconfig /permissions” from an elevated command prompt 
+	  on the RODC.
+
+    c)  If Network Monitor 3.4 has already been installed, run Netmon.exe
+	as an administrator (from an elevated command window, or right-click 
+        on Run as administrator.)
+
+
+----------------------------------------------------------
+8.  Co-existence with Previous Versions of Network Monitor
+----------------------------------------------------------
+
+  Network Monitor 3.4 can co-exist with Network Monitor 2.1 on Windows 
+  XP (or on Windows Server 2003) as long as the applications are installed in
+  separate directories. The default installation directories are:
+    • Network Monitor 2.1:  \program files\Microsoft Network Monitor
+    • Network Monitor 3.4:  \program files\Microsoft Network Monitor 3
+
+  Because Network Monitor 3 is a complete re-write of the capture engine, 
+  the parser engine, and user interface, it is not compatible with parsers 
+  or Experts (plug-ins) that were designed for any version of
+  Network Monitor 2.
+
+  When you install Network Monitor 3.4, any previous version of Network 
+  Monitor 3.x is automatically uninstalled first. Close any 
+  Network Monitor executables before installation. 
+
+-----------------------
+9.  Providing Feedback
+-----------------------
+Feedback is provided through connect.microsoft.com. If you are not already
+participating in the Network Monitor 3 program, follow these steps to participate:
+
+1. Go to http://connect.microsoft.com, and sign in using your Windows Live ID. 
+2. Once you have logged on, click Connection Directory at the 
+   top of the page.
+3. Apply to participate in the Network Monitor 3 program.
+
+Once you are member of the program you can: 
+• File bugs: Go to the Network Monitor 3 Connect page, and click 
+  Feedback, and then Submit Feedback. Include as much information in your 
+  bug description as possible so that the Network Monitor
+  team can reproduce and address the issue.
+
+• Ask questions: Go to the Network Monitor 3 Connect page, and click 
+  Newsgroups. Select a category in the left pane. You can 
+  read existing threads, reply to threads, or create a new thread.
+
+
+----------------------------
+10.  Default Directory Names
+----------------------------
+
+• The default directory for Network Monitor 3.x installation is:
+    • \program files\Microsoft Network Monitor 3
+
+• Network Monitor 3.0 was installed in directory 
+  "\program files\Microsoft Network Monitor 3.0". If you already have the 
+  older version installed, the new installation deletes the 
+  \program files\Microsoft Network Monitor 3.0" directory (if no files
+  in the directory were modified) and installs in the new directory.
+
+• The default directory for user-generated capture files, parsers, filters 
+  and aliases is:
+    • \Documents\Network Monitor 3\
+
+  Network Monitor 3.0 stored capture files, parsers, filters and aliases 
+  in \Documents\My Network Monitor\
+ 
+• The default directory for NPL files is 
+  C:\ProgramData\Microsoft Network Monitor 3\NPL on Windows Vista and Windows 
+  Server 2008. On Windows XP and Server 2003, the NPL files are in 
+  C:\Documents and Settings\All Users\Application Data\Microsoft Network Monitor 3\NPL
+  In Network Monitor 3.1, the NPL files were stored under 
+  \program files\Microsoft Network Monitor\NPL. This directory is removed
+  (if no files were modified) during the installation of Network Monitor 3.4.
+
+
+----------------------------------
+11. Known Issues for All Platforms
+----------------------------------
+
+• Network Monitor 3.4 is currently not recommended for use on production 
+  systems. 
+
+  Network Monitor 3.4 may use significant system resources:
+
+  1.  Disk space: When capturing, Network Monitor 3.4 currently stores 
+      frames in a sequence of capture files named cap*.tmp in your Temp 
+      directory. 
+      If Network Monitor 3.4 is left capturing, by default it continues 
+      to store a series of these files until your disc is within 2 percent of being 
+      full. Then, it stops capturing. You can configure the temporary file
+      size, the disk space limit, and the location of the files (for the UI)
+      from Tools\Options\Capture. The location of these temporary capture files
+      is not configurable for NMCap and the Network Monitor API. For NMCap and NMAPI, 
+      the location is set by the system Temp path. According to MSDN, the Temp path 
+      corresponds to one of the following environment variables (the first one 
+      in the list that exists): 
+        %TMP%
+        %TEMP%
+        %USERPROFILE%
+        Windows Directory
+ 	
+      To change the location of the temporary capture files for NMCap or 
+      NMAPI, change the value of the system Temp path.
+
+      You can also limit the total disk space used to buffer captured frames
+      by modifying the value of the following registry key: 
+      HKCU\Software\Microsoft\Netmon3\Settings\Capture\RootChainCaptureSizeLimit
+      The DWORD value of the key is the maximum size of the capture buffer, 
+      in MB. When the limit is reached, Network Monitor 3.4 stops capturing
+
+  2.  Memory utilization: In addition to capturing, Network Monitor 3.4 
+      assigns properties to frames and groups them into conversations, 
+      using these properties. It then displays these conversations and their
+      related frames in a tree. By default, conversations
+      are enabled. If you notice significant memory consumption 
+      while using Network Monitor 3.4, disable conversations by going to 
+      Tools\Options\Capture.
+
+  3.  Processor utilization: As described in the preceding paragraph,
+      if conversation support is enabled, processor utilization may be
+      significant when processing large numbers of frames.  Disable 
+      conversations if you are concerned with processor utilization.
+
+• If any Network Monitor instances are running during network adapter disable or removal,
+  you will need to close all open instances before you start a new instance of Network
+  Monitor if you wish to get the correct state of enabled network adapters in the new
+  instance. If you start a new instance of Network Monitor with the old instances
+  still running, the new instance of Network Monitor will have all network interfaces
+  displayed with IP address value "None", and all of the network interfaces will be
+  unchecked by default. You will still be able to capture on a specific network 
+  interface in the new instance; however you will need to manually check the interface
+  you would like to capture in the "Select Network" window.
+
+• When installing, uninstalling, or upgrading Network Monitor with a wireless,
+  RAS, or PPPOe connection, the connection may be interrupted or disconnected.
+  You may need to manually reset the connection.  
+
+• If the operating system on which Network Monitor is installed is upgraded to Windows 7, 
+  the Network Monitor driver is no longer bound to the operating system driver. For more 
+  information, see the Knowledge Base article here: http://support.microsoft.com/kb/968216. 
+  To rebind the Network Monitor driver, enter the following in an elevated command window: 
+    nmconfig.exe /install. 
+
+• If you have installed Network Monitor 3.4 and you want to use the older 
+  Network Monitor 3.0, manually uninstall version 3.4 first, before 
+  installing 3.0. Do not install version 3.0 over 3.4.
+
+• If you installed a previous installation of Network Monitor to a non-standard
+  location, Network Monitor 3.4 does not remove it.  Please remove the previous
+  version of Network Monitor before installing 3.4.
+
+• If you uninstall the Microsoft Network Monitor 3.4 program, and then try to run
+  the Microsoft_Parsers.msi, the MSI fails to run. You must 
+  reinstall Microsoft Network Monitor 3.4 to run the Microsoft_Parsers.msi.
+
+• You can configure the disk limit in Network Monitor from Tools\Options\Capture.  
+  When your total disk usage reaches this limit, Network Monitor stops capturing
+  traffic. 
+
+• You can configure the total disk space available to Network Monitor to buffer captured
+  frames using the registry key:
+  HKCU\Software\Microsoft\Netmon3\Settings\Capture\RootChainCaptureSizeLimit
+  
+  The default value is 20 GB. When this limit is reached, Network Monitor stops capturing
+  traffic and the dropped frame number increases. You are not informed 
+  that the limit has been reached.
+
+• The minimum size of a truncated frame is fixed at 14 bytes.
+
+• Network Monitor 3.4 defaults to capturing local traffic only.  
+  Capturing all traffic can be enabled (promiscuous mode) by selecting
+  a Network adapter in the Select Networks window and clicking the 
+  P-mode button. This setting is not persistent across sessions. 
+  Once you exit Network Monitor 3.4 and restart the application, capturing
+  goes back to local only.
+
+• Enabling or disabling conversation options (from Tools\Options\Capture),
+  does not change the options for NMCap. 
+  For NMCap, conversations are always enabled, and you must disable them 
+  using the DisableConversations flag.
+
+• You cannot filter on a conversation property with NMCap.
+
+• While capturing live data, Network Monitor may not be able to associate each frame to 
+  the sending process because the association is attempted when the frame arrives. 
+  If the process has disappeared, the frame is assigned to the unknown process. This 
+  causes the following issues:
+	1. Right-clicking to find a conversation may not work.
+	2. Conversations can occur under both a known process and the unknown process
+		nodes in the tree.
+  You can correct this issue by saving the trace and reopening it.
+
+• When using NMCap, you must specify UDP in your filter in order to capture UDP processes.
+  For example, to capture all processes, including TCP and UDP, you would use the following
+  command: nmcap /network * /capture UDP or !UDP /file foo.cap /captureprocesses
+
+• On Windows Vista or Windows Server 2008, you can set scanning options for a 
+  native WiFi driver in monitor mode by double-clicking on the wireless 
+  adapter in the Select Networks window, and then clicking on 
+  Scanning Options.
+
+  Older a/b/g or Current 802.11n WiFi drivers may not support monitor mode 
+  correctly. Some drivers cause system hangs or crashes when placed in monitor 
+  mode. Please ensure you have an up-to-date driver. More information will be 
+  posted here when available: http://go.microsoft.com/fwlink/?LinkID=88370.
+
+• Placing a wireless adapter in monitor mode breaks that 
+  adapter's wireless data connection. To restore connectivity, place 
+  the wireless adapter in local mode. This is done automatically when 
+  you close the WiFi Scanning Options tool. 
+
+• If you save a capture on a Windows Vista virtual machine to a network drive 
+  that is mapped to the host machine, the file is corrupted. The 
+  work-around is to create a network share on the host computer and save 
+  the file directly to the network share. 
+
+• When changing a parser configurations, a slight delay is possible while the engine is 
+  cleared and reloaded.
+
+• While capturing live traffic and pending frames remain, it is not possible to change 
+  parser profiles.  It is still recommended that you save your current capture to a new file 
+  before reloading parsers
+
+• Default is no longer recognized as a valid parameter for the NPL 
+  RegisterBefore plug-in
+
+• The filters on the following fields have been found to not work consistently
+  between the Network Monitor UI and the command-line version:
+    rpchttp.RTSPacket.Flags.RTS_FLAG_ECHO
+    RAPRBIN.IRASrv.RAPIRASrv_GetNoviceUserInfo.Request.Pointer.ReferentID
+    soh.Microsoft.SSoH.SystemHealthEntityId.SystemHealthId.VendorCode
+
+• Using a filter on an NPL pair (for example, IPv4.Address) in conjunction with a
+  filter on a constituent of the pair (for example, IPv4.SourceAddress) causes
+  incorrect filtering.
+
+• Using ipv4.Address does not return all frames going to and from a given address.
+  To return all frames, combine ipv4.SourceAddress with ipv4.DestinationAddress using
+  an OR operation. For example, ipv4.SourceAddress == 192.168.81.41 OR 
+  ipv4.DestinationAddress == 192.168.81.41
+
+• The filter FrameVariable.TimeDelta does not work as expected for comparison 
+  operations.
+
+• If you include the same file twice in Sparser.npl, this causes a compilation
+  error.
+
+• Protocols that embed others may displace the original property values used to 
+  display the source and destination addresses, as well as other properties. This occurs 
+  because the last protocol that writes a property is the one that is 
+  displayed.
+
+• Modifying a frame in the Hex Details window changes the time offset of the frame
+  that you edit.
+
+• The Network Monitor API does not save information about processes to the 
+  capture file. Process tracking is only available from the Network Monitor UI 
+  and NMCap. 
+
+• The API function NmCreateCapture does not fail if you pass it an invalid path.
+  It returns success and the handle is valid. But once you call NmAddFrame, it
+  returns ERROR_PATH_NOT_FOUND.
+
+• Some API functions may return ERROR_NO_MATCH (1169), for example,
+  NmGetPropertyValueById. This should be interpreted as ERROR_NOT_FOUND (1168).
+
+• Be aware that the NmApiClose call returns immediately while NMAPI is still cleaning up. 
+  If the NmCaptureCallbackExitMode.NmReturnRemainFrames is used, callbacks may continue 
+  to be received after NmApiClose was called. In a scenario when NMAPI is 
+  loaded dynamically (e.g. using the LoadLibrary Win32 API call) the fact that NmApiClose 
+  executes asynchronously can lead to an access violation and application crash if NMAPI 
+  is unloaded before cleaning is finished.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Copyright 2006-2010 Microsoft Corporation. All rights reserved. 
+    Microsoft Network Monitor and its use are subject to a license
+    agreement and are also subject to copyright, trademark, patent
+    and/or other laws.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
