@@ -4,8 +4,7 @@
 	<title>Resource Hacker</title>
 <STYLE type="text/css"><!-- 
     body  {
-      background: url("../bg4.jpg");
-      BACKGROUND-COLOR: #d9d9c0;
+      BACKGROUND-COLOR: #e9e9e9;
       text-align: center;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -37,6 +36,10 @@
       font-weight: normal;
       }
     TD.menu {BACKGROUND-COLOR: #D8D8B8; TEXT-ALIGN: center}
+		
+		ol, ul {margin: .6em 0 .2em 1em; padding: 0px; list-style: outside;}
+		pre {margin: 0px; padding: 0px; font-size: 120%; BACKGROUND-COLOR: #F8F8F8; color: maroon;}
+	
     H2 {COLOR: #009999}
     .caption {BACKGROUND-COLOR: #BACBDA; font-size: 1.3em; font-weight: bold; color: #000066}
     .maroon {color: maroon;} 
@@ -44,13 +47,13 @@
 </head>
 
 <body>
-<div align="justify">
+<div style="width: 1000px; text-align: justify;">
 
 <h2>Resource Hacker™</h2>
 
-<strong>Version 4.2.0</strong><br>
-Last updated: 20 June 2015<br>
-Copyright © 1999-2015 Angus Johnson<br>
+<strong>Version 4.5.28</strong><br>
+Last updated: 25 November 2016<br>
+Copyright © 1999-2016 Angus Johnson<br>
 Freeware - no nags, no ads and fully functional.<br>
 <a href="#download">Download</a><br><br>
 
@@ -113,188 +116,189 @@ If the resource item to be replaced is an icon, cursor, or bitmap, the source ca
 <img src="bm14.png" width="558" height="530" alt=""><br><br>
 
 
-<strong>Command Line Scripting:</strong><br><br>
-	All the functionality of Resource Hacker™ can be accessed from the command line (apart from viewing resources) without having to open the Resource Hacker™ GUI.<br>
-	Command line scripting can remove the drudgery entailed with repeating Resource Hacker™ tasks.<br><br>
-	
-Command line syntax has 2 forms:
-<ol>
-	<li><strong>Single commands:</strong> ResourceHacker.exe command command_parameters
-	<li><strong>Multiple commands:</strong> ResourceHacker.exe -script multi_command_file (note that -script is very different to the -compile command, see below)
-</ol>
+<strong>Command Line Syntax:</strong><br><br>
+	Just about all the functionality of Resource Hacker™ can be accessed from the command line without having to open the Resource Hacker™ GUI.<br>
+	Command line instructions and Resource Hacker™ scripts can remove the drudgery entailed with repeating Resource Hacker™ tasks.<br>
+Commandline instructions are a combination of switch statements followed by switch parameters as explained in the following table: 
 	
 <div  style="padding: 20px; 0px;">
 
-	<b>Single Commands:</b><br>
-	
-	command and command_parameters:<br>
-	<table cellspacing="2" cellpadding="2" border="0">
-	<tr>
-		<td>-compile</td>
-		<td>resource_script.rc</td>
-	</tr>
-	<tr>
-		<td>-add</td>
-		<td>ExeFile, SaveAsFile, ResourceFile, ResourceMask</td>
-	</tr>
-	<tr>
-		<td>-addskip</td>
-		<td>ExeFile, SaveAsFile, ResourceFile, ResourceMask</td>
-	</tr>
-	<tr>
-		<td>-addoverwrite</td>
-		<td>ExeFile, SaveAsFile, ResourceFile, ResourceMask</td>
-	</tr>
-	<tr>
-		<td>-modify</td>
-		<td>ExeFile, SaveAsFile, ResourceFile, ResourceMask</td>
-	</tr>
-	<tr>
-		<td>-extract</td>
-		<td>ExeFile, ResourceFile, ResourceMask</td>
-	</tr>
-	<tr>
-		<td>-delete</td>
-		<td>ExeFile, SaveAsFile, ResourceMask</td>
-	</tr>
-	</table>	   
-	
-	Notes:<br>
-	Each command parameter must be separated by a comma, but no comma is expected before the first parameter.<br>
-	Paths should be included with filenames.<br> 
-	Filenames containing spaces should be enclosed within double quotes.<br><br>
-	
-	
-	The ResourceMask enables a command to be performed on either single or multiple resource items. It takes the form ResType,ResName,ResLang. (If ResType is a predefined type, then either its number or identifier can be used —e.g. the ResourceMask dialog,128,0 is identical to 5,128,0.) Any or all of the ResourceMask items can be omitted —e.g. dialog,, indicates that all dialogs are to be applied to the command irrespective of name or language, and ,,1049 indicates that all resources with Russian (1049) as the languageID will be applied to the command. An empty ResourceMask ,, indicates that the command will be applied to every resource irrespective of type, name or language.<br><br>
-	
-	When adding or modifying items, the ResourceFile can be a RES file for any item type, a BMP file for BITMAP types, a CUR file for CURSORGROUP types, an ICO file for ICONGROUP types, and any file type for RCDATA and user defined resource types.<br><br>
-	
-	When adding and modifying resources from files other than RES files then both ResType and ResName must be specified in the ResourceMask. If ResLang is omitted then the command applies to the first language item with matching type and name, otherwise, if no matching item exists then language neutral (0) is assumed.<br><br>
-	
-	When extracting resources, and more than one item is implied by the ResourceMask, then the specified ResourceFile must be either a RES file or an RC file. When binary image resources are extracted to RC files, each image is also created as a separate binary (ICO, CUR, BMP, GIF, BIN) file. See the example below.<br><br>
-	
-	ICON and CURSOR resources cannot be manipulated directly but are added, deleted, modified and extracted by using their respective ICONGROUP or CURSORGROUP. ICON and CURSOR can still be used but Resource Hacker™ will assume ICONGROUP or CURSORGROUP was intended.<br><br>
-	
-	All actions or errors are logged to “ResourceHacker.log”.<br><br>
-	
-	NB: If a script does not produce the desired results then check the log!<br><br>
-	
-	<strong>Examples:</strong> (File paths have been omitted for clarity)<br><br>
-	<div class="maroon">	
+<b>Command line statements:</b><br>
+<table cellspacing="2" cellpadding="2" border="0">
+<tr>
+	<th align="left">Switch</th>
+	<th align="left">Parameter</th>
+</tr>
+<tr>
+	<td valign="top">-open</td>
+	<td>filename - the name of the file that is to be modified. It should be a Windows PE file (*.exe, *.dll etc) or a compiled or uncompiled resouce file (*.res or *.rc)</td>
+</tr>
+<tr>
+	<td valign="top">-save</td>
+	<td>filename - the new name of the modified or newly created file, either a modified opened file or an extracted resource</td>
+</tr>
+<tr>
+	<td valign="top">-resource&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>filename - contains a resource being added to the opened file.</td>
+</tr>
+<tr>
+	<td valign="top">-action</td>
+	<td>action to be performed on the opened file<br>
+	<ul style="margin: .6em 0 .2em 1em; padding: 0px; list-style: outside;">
+	<li><strong>compile</strong>      - compiles a text resource file (*.rc)
+	<li><strong>add</strong>          - add a resource, fails if it already exists
+	<li><strong>addskip</strong> 	 - add a resource, skips if it already exists
+	<li><strong>addoverwrite</strong> - add a resource, overwrites if it already exists
+	<li><strong>extract</strong>      - extract a resource
+	<li><strong>delete</strong>       - delete a resource
+	</ul>	
+	</td>
+</tr>
+<tr>
+	<td valign="top">-mask</td>
+	<td>resource mask - Type,Name,Language<br>
+	commas are mandatory but each of Type, Name &amp; Language are optional</td>
+</tr>
+<tr>
+	<td valign="top">-log</td>
+	<td>Filename or <strong>CONSOLE</strong> or <strong>NUL</strong><br>
+      CONSOLE can be abbreviated to <strong>CON</strong><br>
+      Logs the details of the operation performed<br>
+      If this switch is omitted, the log will be written to <em>resourcehacker.log</em></td>
+</tr>
+<tr>
+	<td valign="top">-script</td>
+	<td>filename - contains a multi-command script, NOT a resource script for more info: -help script</td>
+</tr>
+<tr>
+	<td valign="top">-help</td>
+	<td>options - commandline or script (always logged to CONSOLE) other switches are ignored.</td>
+</tr>
+</table><br>
 
-	To compile a resource script (from *.rc to *.res)<br>
-	ResourceHacker.exe -compile my_resources.rc<br><br>
+	Notes:
+	<ol>
+	<li>Switch identifiers (except -script) may be abbreviated down to a single char (eg -res or -r).
+	<li>Switch instructions do not have to be in any particular order.
+	<li>File names that contain spaces must be enclosed within double quotes.
+	</ol>
 	
-	To add or update dialog name:maindlg lang:0 in MyProg.exe from UpdDlg.res<br>
-	ResourceHacker.exe -addoverwrite MyProg.exe, MyProgNew.exe, UpdDlg.res, dialog,maindlg,0<br><br>
-	
-	To add or update bitmap name:128 in MyProg.exe from NewImage.bmp<br>
-	ResourceHacker.exe -addoverwrite MyProg.exe, MyProgNew.exe, NewImage.bmp , bitmap,128,<br><br>
-	
-	To add or update all bitmaps in MyProg.exe from Images.res<br>
-	ResourceHacker.exe -addoverwrite MyProg.exe, MyProgNew.exe, Images.res, bitmap,,<br><br>
-	
-	To add a “user-defined” binary resource (README,1,0) to MyProg.exe from ReadMe.html<br>
-	ResourceHacker.exe -addoverwrite MyProg.exe, MyProgNew.exe, ReadMe.html, readme,1,0<br><br>
-	
-	To add all items in Images.res to MyProg.exe (but fail if any item already exists)<br>
-	ResourceHacker.exe -add MyProg.exe, MyProgNew.exe, Images.res ,,,<br><br>
-	
-	To add all items in Images.res to MyProg.exe (skipping any existing items)<br>
-	ResourceHacker.exe -addskip MyProg.exe, MyProgNew.exe, Images.res ,,,<br><br>
-	
-	To modify all items in MyProg.exe with the items in Images.res (ignoring any items in Images.res which do not exist in MyProg.exe)<br>
-	ResourceHacker.exe -modify MyProg.exe, MyProgNew.exe, Images.res , , ,<br><br>
-	
-	To extract all icons from MyProg.exe to MyProgIcons.rc (creating MyProgIcons.rc, Icon_1.ico, Icon_2.ico , Icon_3.ico etc...)<br>
-	ResourceHacker.exe -extract MyProg.exe, MyProgIcons.rc, icongroup,,<br><br>
-	
-	To delete GIF name:128 from MyProg.exe<br>
-	ResourceHacker.exe -delete MyProg.exe, MyProgNew.exe, gif,128,<br><br>
-	</div>
-	
-	<strong>Multiple Commands:</strong><br><br>
-	
-	<strong>syntax:</strong> ResourceHacker.exe -script ScriptFile<br>
-	ScriptFile is a text file with the following layout:<br>
-	<pre><span style="font-size: medium">
-	 //comments are preceded by double slashes
-	 [FILENAMES]
-	 Exe=
-	 SaveAs=
-	 Log=
-	
-	 [COMMANDS]
-	 -add          ResourceSrc, ResourceMask
-	 -addskip      ResourceSrc, ResourceMask
-	 -addoverwrite ResourceSrc, ResourceMask
-	 -addoverwrite ResourceSrc, ResourceMask
-	 -modify       ResourceSrc, ResourceMask
-	 -extract      ResourceTgt, ResourceMask
-	 -delete       ResourceMask
-	</span></pre><br>
-	
-	If Log is omitted then the default log —ResourceHacker.log— will be used.<br>
-	NB: If a script does not produce the desired results then check the log!<br>
-	
-	<strong>Examples:</strong><br><br>
-	<div class="maroon">	
-	<pre><span style="font-size: medium">
-	
-	 rh_script_myprog_rus.txt -
-	
-	 //This script deletes all Language Neutral (0)
-	 //string-table, menu and dialog resource items
-	 //in MyProg.exe before replacing them
-	 //with Russian (1049) items...
-	
-	 [FILENAMES]
-	 Exe=    MyProg.exe
-	 SaveAs= MyProg_Rus.exe
-	 Log=    MyProg_Rus.log
-	
-	 [COMMANDS]
-	 -delete  MENU,,0
-	 -delete  DIALOG,,0
-	 -delete  STRINGTABLE,,0
-	 -add     MyProg_Rus.res, MENU,,1049
-	 -add     MyProg_Rus.res, DIALOG,,1049
-	 -add     MyProg_Rus.res, STRINGTABLE,,1049
-	
-	
-	rh_script_myprog_upd_images.txt -
-	
-	 //This script updates 2 bitmaps and an
-	 //icon in MyProg.exe ...
-	
-	 [FILENAMES]
-	 Exe=    MyProg.exe
-	 SaveAs= MyProg_Updated.exe
-	
-	 [COMMANDS]
-	 -addoverwrite Bitmap128.bmp, BITMAP,128,
-	 -addoverwrite Bitmap129.bmp, BITMAP,129,0
-	 -addoverwrite MainIcon.ico, ICONGROUP,MAINICON,0
-	
-	
-	rh_script_myprog_upd_all.txt -
-	
-	 //This script replaces all resources
-	 //in MyProg.exe with all the resources
-	 //in MyProgNew.res
-	
-	 [FILENAMES]
-	 Exe=    MyProg.exe
-	 SaveAs= MyProg_Updated.exe
-	
-	 [COMMANDS]
-	 -delete  ,,,            //delete all resources before...
-	 -add MyProgNew.res ,,,  //adding all the new resources	 
-	</span></pre>
-	</div><!-- maroon-->
-  </div><!-- script padding-->
+<br>
+<strong>Batch file Examples:</strong><br><br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="600px">
+<tr><td>
+reshack_help.bat:
+<pre>
+  ResourceHacker.exe -help
+  @pause  :: so we can see the console output before the CMD window closes.</pre><br>
   
-  
+reshack_compile_res_script.bat:
+<pre>
+  ResourceHacker.exe -open resources.rc -save resources.res -action compile -log NUL</pre><br>
+
+reshack_add_icon_to_old.bat:
+ <pre>
+   ResourceHacker.exe -open ".\In\old.exe" -save ".\Out\new.exe" -action addskip -res ".\In\missing.ico" -mask ICONGROUP,MAINICON,</pre><br>
+
+reshack_extract_icon_from_source.bat:
+<pre>
+  ResourceHacker.exe -open source.exe -save savedicon.ico -action extract -mask ICONGROUP,MAINICON, -log CONSOLE
+  @pause</pre><br>
+
+reshack_extract_all_icons_from_source.bat:
+<pre>
+  ResourceHacker.exe -open source.exe -save savedicons.rc -action extract -mask ICONGROUP,, -log savedicons.log</pre><br>
+
+reshack_execute_my_script.bat:
+<pre>
+  ResourceHacker.exe -script myscript.txt</pre><br>
+</td></tr>
+</table>
+
+</div><!-- indent padding -->
+	
+<strong>Resource Hacker™ Scripts:</strong><br><br>
+
+Resource Hacker™ Scripts are executed from the commandline using the following syntax:<br><br>
+
+<table cellspacing="0" cellpadding="0" border="0" width="600px">
+<tr><td>
+<pre>  ResourceHacker.exe -script ScriptFile</pre><br>
+</td></tr>
+</table>
+
+<table cellspacing="0" cellpadding="0" border="0" width="600px">
+<tr><td>
+Resource Hacker™ Scripts are text files with the following format:<br><br>
+<pre>
+  //comments are preceded by double slashes
+  [FILENAMES]
+  Open=
+  Save=
+  Log=
+  [COMMANDS]
+  //one or more of the following commands ...
+  -add          SourceFile, ResourceMask
+  -addskip      SourceFile, ResourceMask
+  -addoverwrite SourceFile, ResourceMask
+  -addoverwrite SourceFile, ResourceMask
+  -modify       SourceFile, ResourceMask
+  -extract      TargetFile, ResourceMask
+  -delete       ResourceMask</pre><br>
+	
+Note: Filenames that include spaces must be enclosed within double quotes.<br><br>
+
+<strong>Resource Hacker™ Script examples:</strong><br><br>
+
+rh_script_myprog_rus.txt -
+<pre>
+
+  //This script deletes all Language Neutral (0)
+  //string-table, menu and dialog resource items
+  //in MyProg.exe before replacing them
+  //with Russian (1049) items...	
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Rus.exe
+  Log=    MyProg_Rus.log	
+  [COMMANDS]
+  -delete  MENU,,0
+  -delete  DIALOG,,0
+  -delete  STRINGTABLE,,0
+  -add     MyProg_Rus.res, MENU,,1049
+  -add     MyProg_Rus.res, DIALOG,,1049
+  -add     MyProg_Rus.res, STRINGTABLE,,1049</pre><br>
+	
+rh_script_myprog_upd_images.txt -
+<pre>
+
+  //This script updates 2 bitmaps and an
+  //icon in MyProg.exe ...	
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Updated.exe	
+  [COMMANDS]
+  -addoverwrite Bitmap128.bmp, BITMAP,128,
+  -addoverwrite Bitmap129.bmp, BITMAP,129,0
+  -addoverwrite MainIcon.ico, ICONGROUP,MAINICON,0</pre><br>
+		
+rh_script_myprog_upd_all.txt -
+<pre>
+
+  //This script replaces all resources
+  //in MyProg.exe with all the resources
+  //in MyProgNew.res	
+  [FILENAMES]
+  Exe=    MyProg.exe
+  SaveAs= MyProg_Updated.exe
+  [COMMANDS]
+  -delete  ,,,            //delete all resources before...
+  -add MyProgNew.res ,,,  //adding all the new resources</pre><br>
+</td></tr>
+</table>
+
+
 <B>Licence to Use - Terms and Conditions:</B><BR>
 <TABLE cellPadding=5 width="90%" align=center border=0>
 	<TR><TD>This Resource Hacker<SUP><FONT SIZE="1">TM</FONT></SUP> software is released as freeware provided that you agree to the following terms and conditions:
@@ -321,8 +325,8 @@ Command line syntax has 2 forms:
 <B>Download</B><BR><BR>
 
 <ul>
-	<li><A href="reshacker_setup.exe" ><strong>Setup executable </strong> (3.6MB)</A>
-	<li><A href="resource_hacker.zip" ><strong>'Portable' Zip file </strong> (3.6MB)</A>
+	<li><A href="reshacker_setup.exe" ><strong>Setup executable </strong> (2.7MB)</A>
+	<li><A href="resource_hacker.zip" ><strong>'Portable' Zip file </strong> (2.9MB)</A>
 </ul><br><br>
 
 
