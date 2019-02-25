@@ -14,6 +14,7 @@
   <comInterfaceExternalProxyStub name="IDebugScriptBreakpointRequest" iid="{0EEE46D5-A6E5-4F19-8611-0CD498175AC1}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugTargetDataProvider" iid="{5B5C2107-188B-458B-AAE8-068914BD8951}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="ITraceAttachSettingsCallback140" iid="{A2EF881C-CE12-42E9-84B3-83BD7A49AF4A}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugTimeContext156" iid="{D806041D-EBB0-4D12-A77F-C4F2E4F77286}" numMethods="6" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugHistoricalEngineProgram100" iid="{E49C941D-86F0-4EAA-A558-9858B47410B9}" numMethods="11" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugTraceEventQuery100" iid="{46EF9C47-8DDD-41EA-A5E6-7162313E6531}" numMethods="16" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugComPlusEngineConnectionPoint" iid="{D263FB51-B4A3-4711-806E-51892578B0CF}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
@@ -27,9 +28,11 @@
   <comInterfaceExternalProxyStub name="IEnumDebugNodeInfo100" iid="{EAE3BBA8-0BA2-4875-B5F6-B0C525D064DA}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IBidiEnumChildNodeInfo100" iid="{FB2EF2B2-9F9B-470F-9369-1F4F24E55B64}" numMethods="11" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IEnumDebugTimeContexts100" iid="{01B8DAB8-43C5-43BD-ABB4-1E73B660B064}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugHistoricalProgram156" iid="{E212A2CB-5875-4D6C-8547-1C0DFA4807D5}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="ITraceLaunchSettingsCallback100" iid="{FFF746CD-DA2A-4DAE-A1C2-B9FE11F8B652}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugStateRecorder100" iid="{60A26CDB-7414-4FD0-B9D9-C8E3ED81127C}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="INotifyPointService" iid="{538832E1-8E09-4F87-AB5E-A8D57C50C4FA}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugTimeContextActivatedEvent156" iid="{86ABC6EA-5C4D-4DD1-B226-EEE35B0DC4C1}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugCallTreeStepper100" iid="{4661BAEC-8B79-4B4C-992E-2E0C812325B1}" numMethods="6" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugTimeContextChangeEvent100" iid="{D4E07EF3-F017-4C2C-BDB1-EF54A98BEB34}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugTimeContext100" iid="{153456F4-6CDF-473D-B826-C340B6880F78}" numMethods="6" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
@@ -150,6 +153,7 @@
   <comInterfaceExternalProxyStub name="IDebugENCStackFrame2" iid="{B3C64D7F-DB9D-47C7-B479-C579C7F07103}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugENCRelinkInfo2" iid="{CBB63A8D-BD57-11D2-9238-00A02448799A}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IEnumDebugIDBInfo2" iid="{B34E469B-BD59-11D2-9238-00A02448799A}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugUpdateInMemoryPE3" iid="{AE2FF3A4-2FA6-487C-AE74-9FB3D9276742}" numMethods="15" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IENCSymbolReaderProvider" iid="{B69910A9-4AD6-475F-859A-5DC0B1072A5D}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugIDBInfo2" iid="{9B7DE9A9-BD59-11D2-9238-00A02448799A}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugUpdateInMemoryPE2" iid="{8A9E5AAE-BEF6-47A8-879B-690463516D73}" numMethods="13" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
@@ -159,6 +163,7 @@
   <comInterfaceExternalProxyStub name="IEnumDebugENCInfo2" iid="{7B076AD1-BD51-11D2-9238-00A02448799A}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugCustomENCModule100" iid="{A39A3DDD-AF4D-48FA-BC0D-7AFD3FCDEE9B}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugENCUpdate" iid="{978BAEE7-BD4C-11D2-9238-00A02448799A}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugENCModule2" iid="{A58FF1F1-1FFF-44B4-A311-55D6675F4A0F}" numMethods="11" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugENCSnapshot4" iid="{25A3A07D-BB12-44BA-8BEA-1FD36139C145}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugENCInfo3" iid="{754202D4-BC6F-406D-84B8-BEC944DDB7CB}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugConsoleWindow" iid="{56C37742-D7C7-4B33-9E9A-9DBFE24F5514}" numMethods="13" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
@@ -418,12 +423,32 @@
   <comInterfaceExternalProxyStub name="IDebugExceptionCondition" iid="{FBFD0196-B9A4-48FC-AB5E-77E4A2EFD887}" numMethods="7" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IEnumDebugExceptionInfo150" iid="{418C94A5-23B8-461E-A117-69543CE0DB36}" numMethods="8" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugTelemetryDetailsEvent150" iid="{8F2652B2-CD3C-4AED-A946-A3DB6F379412}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugLostBreakStateEvent150" iid="{33B3C3D1-9A81-4D9A-AD69-14D66148D818}" numMethods="3" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugProperty150" iid="{6F4E34DA-6B2B-4624-93C5-93A058CD95DE}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugSourceLinkDocumentContext150" iid="{667F17DE-B438-4ADA-A1E5-5517DB9F6533}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugExceptionSettingsManager150" iid="{791019DE-09C3-4438-9A74-078511727A09}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugCodeContextInfoCompletionRoutine150" iid="{BF4CD6E7-7AD0-45A4-B1BF-D94BBBF0B0E5}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugSourceLinkInfo150" iid="{6A31F3F2-BF97-452D-888B-CD526D1E9D80}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugExceptionConditionList" iid="{14FB02FF-2D1B-496A-96C7-2F565BBFCEA4}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugEngineOperation" iid="{08C85523-1F56-4CCD-8315-DF2C657A245F}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugGetThreadPropertiesCompletionHandler" iid="{00EB372D-8DC7-404A-AF65-17262FD3B330}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugEngineOperationWorkList" iid="{4401B380-016E-4B61-8532-B3B0F41A3B47}" numMethods="6" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugWorkListFactory" iid="{119CD2BC-74EC-4510-A0CD-6276A8A87737}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugThread156" iid="{F6CD61C6-B706-488A-96C0-1FC3F10AE514}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugThread157" iid="{43C7542B-F624-4E1F-9761-BB5A9396CAFF}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugEvaluateCompletionHandler" iid="{DF75AC59-E3CF-456B-A5A2-B8B8FBDFB7A7}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugGetPropertiesCompletionHandler" iid="{5C9AFC5D-FD11-43F9-A6AA-345625DEA2A3}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugStackFrame157" iid="{3C0FE564-2DFA-40D4-842E-1B7747C4C3EA}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugExpression157" iid="{15FA3968-A6EB-481D-A55D-EB6927DAC066}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugGetFramesCompletionHandler" iid="{15C89F68-17D2-4C34-9714-E5A1E0824904}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugProperty157" iid="{790D60A3-2F26-426F-8A3C-53DB57D4CD29}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugPropertyInfoProvider" iid="{BB7E4DEC-D761-41E6-8281-8976641EFE90}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugEngineOperation158" iid="{0FDDD94E-01DA-4409-844C-36C63AAD3FC9}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IVsDebuggerDelayedEnterBreakSink" iid="{B00E6E5A-7A25-454D-858A-396F7D24E17F}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IAsyncDebugEngineOperationWorkList158" iid="{44DFF079-4364-4D72-9997-CD3FE128CE39}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugProperty158" iid="{E02453B1-F68A-47C1-B243-25760004A4B9}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IVsDebuggerDelayedEnterBreak" iid="{A01C5DF6-ED76-4BCE-B38D-50563C2E59F0}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
+  <comInterfaceExternalProxyStub name="IDebugProcessInfoUpdatedEvent158" iid="{96C242FC-F584-4C3E-8FED-384D3D13EF36}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugProgramEnhancedStep90" iid="{6D07112F-B30D-47B4-B5CE-45B26C29205A}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugStepCompleteEvent90" iid="{82D3F946-C2F8-495B-8B5F-9C30ACDC6C81}" numMethods="5" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
   <comInterfaceExternalProxyStub name="IDebugProcessEnhancedStep90" iid="{C446CA51-979A-4096-B996-5934B7AB0455}" numMethods="4" proxyStubClsid32="{C5621364-87CC-4731-8947-929CAE75323E}"/>
