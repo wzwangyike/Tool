@@ -1,3 +1,14 @@
+Changes in 5.1.6
+  Bugfix:  Fixed broken Accelerator compiling.
+Changes in 5.1.6
+  Bugfix:  Commandline syntax bug (some commas required trailing spaces)
+Changes in 5.1.5
+  Bugfix:  Comments within some resource definitions would not compile
+Changes in 5.1.4
+  Bugfix:  Editor font preferences not being applied on restart
+  Bugfix:  Minor buges in commandline processing
+Changes in 5.1.2
+  Update:  Update to commandline sytax and & bugfixes
 Changes in 5.1.1
   Bugfix:  incorrect editor fonts when displaying multibyte characters
   Bugfix:  compiler mishandled hex. escape chars with ambiguous trailing text.
